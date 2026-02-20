@@ -93,7 +93,7 @@ static bool IsConnectionActive(Graph* g, int a, int b, Camera3D* cam)
 
     float screenDist = Vector2Distance(sa, sb);
 
-    return screenDist < 80.0f;
+    return screenDist < 80.0f * (45/cam->fovy);
 }
 
 //--------------------------------------------------
@@ -356,31 +356,26 @@ static void DrawGraph(Graph* g, bool debug)
 
 static int GetClickedNode(Graph* g, Camera3D cam)
 {
-    Ray ray = GetMouseRay(GetMousePosition(), cam);
+    Vector2 mouse = GetMousePosition();
 
-    float best = 999999;
-    int result = -1;
+    int closest = -1;
+    float bestDist = 999999;
 
-    for(int i=0;i<g->nodeCount;i++)
+    for(int i = 0; i < g->nodeCount; i++)
     {
-        BoundingBox box =
-        {
-            Vector3Subtract(g->nodes[i].position,(Vector3){0.3f,0.3f,0.3f}),
-            Vector3Add(g->nodes[i].position,(Vector3){0.3f,0.3f,0.3f})
-        };
+        Vector2 screenPos = GetWorldToScreen(g->nodes[i].position, cam);
 
-        RayCollision hit = GetRayCollisionBox(ray,box);
+        float dist = Vector2Distance(mouse, screenPos);
 
-        if(hit.hit && hit.distance < best)
+        if(dist < 30.0f && dist < bestDist)
         {
-            best = hit.distance;
-            result = i;
+            bestDist = dist;
+            closest = i;
         }
     }
 
-    return result;
+    return closest;
 }
-
 //--------------------------------------------------
 // Main
 //--------------------------------------------------
@@ -394,7 +389,7 @@ int main()
         .position = {6,6,6},
         .target = {2,2,0},
         .up = {0,1,0},
-        .fovy = 45,
+        .fovy = 10,
         .projection = CAMERA_ORTHOGRAPHIC
     };
 
