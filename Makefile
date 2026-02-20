@@ -2,6 +2,9 @@ export CCACHE_DISABLE=1
 # tool macros
 CC := gcc  # FILL: the compiler
 CFLAGS := -I./include -lraylib -lm -lbox2d # FILL: compile flags
+ifeq ($(shell uname), Darwin)
+	CFLAGS := -I./include -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
+endif
 DBGFLAGS := -g
 COBJFLAGS := $(CFLAGS) -c
 
@@ -52,13 +55,13 @@ $(TARGET_DEBUG): $(OBJ_DEBUG)
 	$(CC) $(CFLAGS) $(DBGFLAGS) $(OBJ_DEBUG) -o $@
 
 # phony rules
-.PHONY: run 
+.PHONY: run
 run: all
 	@cd ./$(BIN_PATH) && ./$(TARGET_NAME) $(ARGS)
 
 .PHONY: makedir
 makedir:
-	@mkdir -p $(BIN_PATH) $(OBJ_PATH) $(DBG_PATH) 
+	@mkdir -p $(BIN_PATH) $(OBJ_PATH) $(DBG_PATH)
 
 .PHONY: all
 all: $(TARGET)
@@ -76,5 +79,3 @@ clean:
 distclean:
 	@echo CLEAN $(DISTCLEAN_LIST)
 	@rm -f $(DISTCLEAN_LIST)
-
-
