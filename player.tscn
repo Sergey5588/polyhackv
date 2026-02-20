@@ -1,30 +1,15 @@
 [gd_scene format=3 uid="uid://cd0mcl7t7fucq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh265"]
+render_priority = 100
+transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4flbx"]
 material = SubResource("StandardMaterial3D_sh265")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_onrkg"]
-material = SubResource("StandardMaterial3D_4flbx")
-radius = 0.1
-height = 0.2
-
 [node name="Player" type="Node3D" unique_id=202942338]
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=195067198]
 mesh = SubResource("SphereMesh_4flbx")
-
-[node name="Eye1" type="MeshInstance3D" parent="." unique_id=195250008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3927604, 0.3086782, 0.2035729)
-mesh = SubResource("SphereMesh_onrkg")
-
-[node name="Eye2" type="MeshInstance3D" parent="." unique_id=2123553419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3927604, 0.3086782, -0.18699)
-mesh = SubResource("SphereMesh_onrkg")

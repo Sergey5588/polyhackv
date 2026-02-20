@@ -1,7 +1,7 @@
 shader_type spatial;
 
-render_mode cull_back, unshaded,blend_mix,depth_prepass_alpha;
-
+//render_mode cull_back, unshaded,depth_prepass_alpha, blend_mix,depth_draw_opaque;
+render_mode cull_back, unshaded, blend_mix, depth_draw_never;
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
