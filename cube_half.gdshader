@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode cull_back, unshaded;
+render_mode cull_back, unshaded,blend_mix,depth_prepass_alpha;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -14,7 +14,7 @@ void fragment() {
     vec3 axis = round(world_normal);
 
     vec3 color;
-
+	float alpha = 1.0f;
     // top
     if (axis.y > 0.5) {
         color = vec3(1.0); // white
@@ -25,7 +25,8 @@ void fragment() {
     }
     // left
     else if (axis.z > 0.5) {
-        color = vec3(0.20); // dark gray
+        color = vec3(0); // dark gray
+		alpha = 0.0;
     }
     // front/back/bottom (optional)
     else {
@@ -33,6 +34,7 @@ void fragment() {
     }
 
     ALBEDO = color;
+	ALPHA = alpha;
 }
 //void light() {
 //	// Called for every pixel for every light affecting the material.
