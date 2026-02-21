@@ -1,10 +1,8 @@
 shader_type spatial;
+//always in front
+//render_mode cull_back, unshaded, depth_test_default;
+render_mode cull_back, unshaded,depth_draw_opaque, depth_prepass_alpha;
 
-render_mode cull_back, unshaded, depth_test_default;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
 
 void fragment() {
     // convert normal to world space
