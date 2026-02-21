@@ -124,4 +124,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if get_node_or_null("MeshInstance3D") != null:
 			get_node("MeshInstance3D").queue_free()
 			body.counter+=1
+			$"../../CanvasLayer2/Control/RichTextLabel".text = str(body.counter)
 	pass # Replace with function body.
