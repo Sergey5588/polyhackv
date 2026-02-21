@@ -3,10 +3,15 @@
 [ext_resource type="Shader" uid="uid://b6qyvof7wvvro" path="res://cube_back.gdshader" id="1_jbd7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wd2d1"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_jbd7x")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_ftslj"]
+resource_local_to_scene = true
 material = SubResource("ShaderMaterial_wd2d1")
 
 [node name="cube" type="MeshInstance3D" unique_id=1848692459]

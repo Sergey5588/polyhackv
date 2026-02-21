@@ -1,5 +1,8 @@
 shader_type spatial;
 //always in front
+uniform bool hide_z = false;
+uniform bool hide_x = false;
+uniform bool hide_y = false;
 //render_mode cull_back, unshaded, depth_test_default;
 render_mode cull_back, unshaded,depth_draw_opaque, depth_prepass_alpha;
 
@@ -16,14 +19,17 @@ void fragment() {
     // top
     if (axis.y > 0.5) {
         color = vec3(1.0); // white
+		if(hide_y) ALPHA = 0.0f;
     }
     // right
     else if (axis.x > 0.5) {
         color = vec3(0.65); // gray
+		if(hide_x) ALPHA = 0.0f;
     }
     // left
     else if (axis.z > 0.5) {
         color = vec3(0.20); // dark gray
+		if(hide_z) ALPHA = 0.0f;
     }
     // front/back/bottom (optional)
     else {

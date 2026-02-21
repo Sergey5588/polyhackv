@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@export var time_per_segment: float = 0.1
-@export var click_radius: float = 1.5        # How close click must be to node
+@export var time_per_segment: float = 0.25
+@export var click_radius: float = 0.5       # How close click must be to node
 @export var movement_nodes_group: String = "movement_nodes"
 
 var path: Array[MovementNode] = []
@@ -12,7 +12,7 @@ var elapsed_time: float = 0.0
 
 var current_segment_index: int = 0
 var segment_elapsed_time: float = 0.0
-
+var current_target: MovementNode = null
 # -------------------------
 # INPUT
 # -------------------------
@@ -70,23 +70,32 @@ func get_clicked_node() -> MovementNode:
 # -------------------------
 
 func move_to_node(target: MovementNode):
-	current_segment_index = 0
-	segment_elapsed_time = 0.0
-	#is_moving = true
-	var start_node = get_closest_node_to_player()
+
+	# Ignore if clicking same target while already moving
+	if is_moving and target == current_target:
+		return
+
+	current_target = target
+
+	var start_node: MovementNode = get_closest_node_to_player()
 
 	if start_node == null or target == null:
 		return
 
-	path = find_path(start_node, target)
+	var new_path = find_path(start_node, target)
 
-	if path.is_empty():
+	if new_path.is_empty():
 		return
+
+	path = new_path
+
+	current_segment_index = 0
+	segment_elapsed_time = 0.0
 
 	build_path_positions()
 
-	elapsed_time = 0.0
 	is_moving = true
+	
 
 
 # -------------------------
@@ -116,7 +125,10 @@ func get_closest_node_to_player() -> MovementNode:
 func build_path_positions():
 	path_positions.clear()
 
-	for i in path.size():
+	# First position is ALWAYS the player's current position
+	path_positions.append(global_position)
+
+	for i in range(1, path.size()):
 		path_positions.append(path[i].global_position)
 
 
@@ -131,6 +143,7 @@ func _physics_process(delta):
 
 	if current_segment_index >= path_positions.size() - 1:
 		is_moving = false
+		current_target = null
 		return
 
 	segment_elapsed_time += delta
@@ -146,6 +159,7 @@ func _physics_process(delta):
 		segment_elapsed_time = 0.0
 	else:
 		global_position = start_pos.lerp(end_pos, t)
+		
 
 
 # -------------------------

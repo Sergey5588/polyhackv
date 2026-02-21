@@ -11,6 +11,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 render_priority = -1
 shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 material = SubResource("ShaderMaterial_0xm2m")
@@ -40,6 +43,78 @@ item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 
 item/1/navigation_layers = 1
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vw27"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_272bh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_4c57u"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_kek77")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg77c"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_efxa6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycdy4"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_w48qg"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_ycdy4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kek77"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_5vw27")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/hide_z = false
+shader_parameter/hide_x = false
+shader_parameter/hide_y = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_efxa6"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_4c57u")
 
 [node name="Main" type="Node3D" unique_id=1457051980]
 
@@ -95,18 +170,32 @@ script = ExtResource("1_lquwl")
 [node name="cube" parent="AlwaysFront" unique_id=1848692459 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 layers = 2
+mesh = SubResource("BoxMesh_5vw27")
 
 [node name="cube2" parent="AlwaysFront" unique_id=2050160666 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 layers = 2
+mesh = SubResource("BoxMesh_4c57u")
 
 [node name="cube3" parent="AlwaysFront" unique_id=554538524 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
 layers = 2
+mesh = SubResource("BoxMesh_dg77c")
 
 [node name="cube4" parent="AlwaysFront" unique_id=750610131 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2)
 layers = 2
+mesh = SubResource("BoxMesh_w48qg")
+
+[node name="cube5" parent="AlwaysFront" unique_id=677867025 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+layers = 2
+mesh = SubResource("BoxMesh_kek77")
+
+[node name="cube6" parent="AlwaysFront" unique_id=372389027 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+layers = 2
+mesh = SubResource("BoxMesh_efxa6")
 
 [node name="MovementNodes" type="Node3D" parent="." unique_id=1058866962]
 script = ExtResource("6_272bh")
