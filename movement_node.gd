@@ -4,7 +4,7 @@ class_name MovementNode
 @export var auto_connect_radius: float = 1.0
 @export var connections: Array[MovementNode] = []
 
-@export var debug_enabled: bool = true
+@export var debug_enabled: bool = false
 @export var debug_color: Color = Color.GREEN
 
 var debug_mesh_instance: MeshInstance3D

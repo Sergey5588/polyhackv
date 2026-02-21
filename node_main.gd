@@ -5,11 +5,17 @@ extends Node3D
 func _ready() -> void:
 	#var a = $MovementNode5
 	#var b = $MovementNode10
-	var a = $MovementNode5
-	var b = $MovementNode10
-	a.connect_bidirectional(b)
+	pass
+
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var a = $MovementNode5
+	var b = $MovementNode10
+	if $"../Camera3D".rotation_degrees.y == 45:
+		a.connect_bidirectional(b)
+	else:
+		a.disconnect_from(b)
+		
 	pass
