@@ -72,7 +72,7 @@ func get_clicked_node() -> MovementNode:
 func move_to_node(target: MovementNode):
 	current_segment_index = 0
 	segment_elapsed_time = 0.0
-	is_moving = true
+	#is_moving = true
 	var start_node = get_closest_node_to_player()
 
 	if start_node == null or target == null:
