@@ -9,6 +9,7 @@ shader = ExtResource("1_jbd7x")
 shader_parameter/hide_z = false
 shader_parameter/hide_x = false
 shader_parameter/hide_y = false
+shader_parameter/mixColor = Vector3(1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ftslj"]
 resource_local_to_scene = true

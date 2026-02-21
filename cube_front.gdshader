@@ -12,7 +12,7 @@ void fragment() {
     vec3 world_normal = normalize((INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
 
     // snap normal to closest axis
-    vec3 axis = round(world_normal);
+    vec3 axis = (world_normal);
 
     vec3 color;
 
