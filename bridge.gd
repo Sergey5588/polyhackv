@@ -15,10 +15,19 @@ func _ready() -> void:
 		
 	pass # Replace with function body.
 
+func get_children_names() -> Array[String]:
+	var names: Array[String] = []
+
+	for child in get_children():
+		names.append(child.name)
+
+	return names
+func can_rotate():
+	return not is_rotating and Input.is_action_just_pressed("rotate_1") and ($"../Player".get_nearest_node_along_path().name not in get_children_names())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not is_rotating and Input.is_action_just_pressed("rotate_1"):
+	if can_rotate():
 		is_rotating = true
 		target_angle+=PI*0.5
 	

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var time_per_segment: float = 0.25
+@export var time_per_segment: float = 1
 @export var click_radius: float = 0.5
 @export var movement_nodes_group: String = "movement_nodes"
 
@@ -19,48 +19,14 @@ var counter = 0
 # INPUT
 # ---------------------------------------------------
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var node = get_clicked_node()
-			if node != null:
-				move_to_node(node)
+
 
 
 # ---------------------------------------------------
 # FIND CLICKED NODE
 # ---------------------------------------------------
 
-func get_clicked_node() -> MovementNode:
 
-	var camera = get_viewport().get_camera_3d()
-	if camera == null:
-		return null
-
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_origin = camera.project_ray_origin(mouse_pos)
-	var ray_dir = camera.project_ray_normal(mouse_pos).normalized()
-
-	var closest_node: MovementNode = null
-	var closest_dist := click_radius
-
-	for node in get_tree().get_nodes_in_group(movement_nodes_group):
-
-		var node_pos = node.global_position
-		var to_node = node_pos - ray_origin
-		var projection_length = to_node.dot(ray_dir)
-
-		if projection_length < 0:
-			continue
-
-		var closest_point = ray_origin + ray_dir * projection_length
-		var dist = node_pos.distance_to(closest_point)
-
-		if dist < closest_dist:
-			closest_dist = dist
-			closest_node = node
-
-	return closest_node
 
 
 # ---------------------------------------------------
@@ -129,7 +95,11 @@ func build_path_positions():
 # ---------------------------------------------------
 
 func _physics_process(delta):
-
+	var plr_node = $"../Player".get_nearest_node_along_path()
+	
+	if plr_node != null:
+		move_to_node(plr_node)
+	
 	if not is_moving:
 		return
 

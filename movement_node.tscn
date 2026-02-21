@@ -11,9 +11,19 @@ material = SubResource("StandardMaterial3D_lquwl")
 radius = 0.125
 height = 0.25
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_cgvvi"]
+radius = 0.31366134
+
 [node name="MovementNode" type="Node3D" unique_id=2142940285 groups=["movement_nodes"]]
 script = ExtResource("1_cgvvi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625019819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("SphereMesh_ekbm1")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1718759567]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=725592886]
+shape = SubResource("SphereShape3D_cgvvi")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

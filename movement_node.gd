@@ -1,7 +1,7 @@
 extends Node3D
 class_name MovementNode
 
-@export var auto_connect_radius: float = 1.0
+@export var auto_connect_radius: float = 1.01
 @export var connections: Array[MovementNode] = []
 
 @export var debug_enabled: bool = true
@@ -117,3 +117,11 @@ func draw_debug_lines():
 		debug_mesh.surface_add_vertex(to_local(node.global_position))
 
 	debug_mesh.surface_end()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		if get_node_or_null("MeshInstance3D") != null:
+			get_node("MeshInstance3D").queue_free()
+			body.counter+=1
+	pass # Replace with function body.
