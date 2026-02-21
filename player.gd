@@ -23,7 +23,6 @@ func _input(event):
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 
 			var node = get_clicked_node()
-			print(node.name)
 			if node != null:
 				move_to_node(node)
 
