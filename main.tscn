@@ -92,7 +92,7 @@ shader_parameter/hide_y = false
 resource_local_to_scene = true
 material = SubResource("ShaderMaterial_ycdy4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vivmo"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_0xm2m")
@@ -100,11 +100,11 @@ shader_parameter/hide_z = false
 shader_parameter/hide_x = false
 shader_parameter/hide_y = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_kek77"]
+[sub_resource type="BoxMesh" id="BoxMesh_2cqfq"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_5vw27")
+material = SubResource("ShaderMaterial_vivmo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_0xm2m")
@@ -112,9 +112,9 @@ shader_parameter/hide_z = false
 shader_parameter/hide_x = false
 shader_parameter/hide_y = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_efxa6"]
+[sub_resource type="BoxMesh" id="BoxMesh_074og"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_4c57u")
+material = SubResource("ShaderMaterial_yaehf")
 
 [node name="Main" type="Node3D" unique_id=1457051980]
 
@@ -190,12 +190,12 @@ mesh = SubResource("BoxMesh_w48qg")
 [node name="cube5" parent="AlwaysFront" unique_id=677867025 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
 layers = 2
-mesh = SubResource("BoxMesh_kek77")
+mesh = SubResource("BoxMesh_2cqfq")
 
 [node name="cube6" parent="AlwaysFront" unique_id=372389027 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
 layers = 2
-mesh = SubResource("BoxMesh_efxa6")
+mesh = SubResource("BoxMesh_074og")
 
 [node name="MovementNodes" type="Node3D" parent="." unique_id=1058866962]
 script = ExtResource("6_272bh")
